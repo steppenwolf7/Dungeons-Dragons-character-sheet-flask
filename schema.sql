@@ -24,12 +24,12 @@ CREATE TABLE character (
   character_name TEXT NOT NULL,
   character_class TEXT NOT NULL,
   character_race TEXT NOT NULL,
-  character_strenght TEXT NOT NULL,
-  character_dexterity TEXT NOT NULL,
-  character_constitution TEXT NOT NULL,
-  character_intelligence TEXT NOT NULL,
-  character_wisdom TEXT NOT NULL,
-  character_charisma TEXT NOT NULL,
+  character_strenght INTEGER NOT NULL,
+  character_dexterity INTEGER NOT NULL,
+  character_constitution INTEGER NOT NULL,
+  character_intelligence INTEGER NOT NULL,
+  character_wisdom INTEGER NOT NULL,
+  character_charisma INTEGER NOT NULL,
   
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
