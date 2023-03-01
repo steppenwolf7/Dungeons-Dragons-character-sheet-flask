@@ -30,6 +30,5 @@ CREATE TABLE character (
   character_intelligence INTEGER NOT NULL,
   character_wisdom INTEGER NOT NULL,
   character_charisma INTEGER NOT NULL,
-  
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
