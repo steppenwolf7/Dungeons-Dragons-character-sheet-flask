@@ -20,24 +20,26 @@ def roll():
 @login_required
 def character():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        name = request.form['name']
+        class_character = request.form['class_character']
+        race = request.form['race']
+        strenght = request.form['']
         error = None
 
-        if not title:
-            error = 'Title is required.'
+        if not name:
+            error = 'Name is required.'
 
         if error is not None:
             flash(error)
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, body, author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
+                'INSERT INTO character (character_name, character_class, character_race, author_id)'
+                ' VALUES (?, ?, ?, ?)',
+                (name, class_character, race, g.user['id'])
             )
             db.commit()
-            return redirect(url_for('blog.index'))
+            return redirect(url_for('roll'))
     
-        return render_template('dd_roller/create_character.html')  
+    return render_template('dd_roller/create_character.html')  
    

@@ -8,16 +8,16 @@
   {% endblock %}
 
 {% block content %}
-
+<form method="post" id="form">
 <div class="container mt-3">
   <p>Type your character name</p>
-  <input type="text" class="form-control" placeholder="Type name" required>
+  <input name="name" id="name" type="text" class="form-control" placeholder="Type name" value="{{ request.form['name'] }}" required>
 </div>
 
 <div class="container mt-3">
   <p>Choose your character class</p>
   
-  <select class="form-select">
+  <select name="class_character" id="class_character" class="form-select" value="{{ request.form['class_character'] }}">
     <option>Barbarian</option>
     <option>Bard</option>
     <option>Cleric</option>
@@ -34,7 +34,7 @@
 <div class="container mt-3">
   <p>Choose your character race</p>
   
-  <select class="form-select">
+  <select name="race" id="race" class="form-select" value="{{ request.form['race'] }}">
     <option>Human</option>
     <option>Elve</option>
     <option>Dwarves</option>
@@ -43,7 +43,7 @@
     <option>Halfling</option>
   </select>
 </div> 
-
+</form>
 
 <div class="container mt-3">
     <h2>Roll your attributes!</h2>
@@ -59,32 +59,32 @@
       <tbody>
         <tr>
           <td><button type="button" class="data-fetcher" class="data-fetcher" data-form="form1" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <form id="form1"><td><input id="get_data1" name="data" type="text" class="form-control" placeholder="Roll it" value="" readonly></td></form>
+          <form id="form1"><td><input id="get_data1" name="data" type="text" class="form-control" placeholder="Roll it" value="{{ request.form['strenght'] }}" readonly></td></form>
           <td>Strenght</td>
         </tr>
         <tr>
           <td><button type="button"  class="data-fetcher" data-form="form2" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <form id="form2"><td><input id="get_data2" name="data" type="text" class="form-control" placeholder="Roll it" value="" readonly></td></form>
+          <form id="form2"><td><input id="get_data2" name="data" type="text" class="form-control" placeholder="Roll it" value="{{ request.form['dexterity'] }}" readonly></td></form>
           <td>Dexterity</td>
         </tr>
         <tr>
           <td><button type="button"  class="data-fetcher" data-form="form3" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <form id="form3"><td><input id="get_data3" name="data" type="text" class="form-control" placeholder="Roll it" value="" readonly></td></form>
+          <form id="form3"><td><input id="get_data3" name="data" type="text" class="form-control" placeholder="Roll it" value="{{ request.form['constitution'] }}" readonly></td></form>
           <td>Constitution</td>
         </tr>
         <tr>
           <td><button type="button"  class="data-fetcher" data-form="form4" onclick="playAudio('/static/rpg_dice.mp3')" >ROLL</button></td>
-          <form id="form4"><td><input id="get_data4" name="data" type="text" class="form-control" placeholder="Roll it" value="" readonly></td></form>
+          <form id="form4"><td><input id="get_data4" name="data" type="text" class="form-control" placeholder="Roll it" value="{{ request.form['intelligence'] }}" readonly></td></form>
           <td>Intelligence</td>
         </tr>
         <tr>
           <td><button type="button"  class="data-fetcher" data-form="form5" onclick="playAudio('/static/rpg_dice.mp3')" >ROLL</button></td>
-          <form id="form5"><td><input id="get_data5" name="data" type="text" class="form-control" placeholder="Roll it" value="" readonly></td></form>
+          <form id="form5"><td><input id="get_data5" name="data" type="text" class="form-control" placeholder="Roll it" value="{{ request.form['wisdom'] }}" readonly></td></form>
           <td>Wisdom</td>
         </tr>
         <tr>
           <td><button type="button"  class="data-fetcher" data-form="form6" onclick="playAudio('/static/rpg_dice.mp3')" >ROLL</button></td>
-          <form id="form6"><td><input id="get_data6" name="data" type="text" class="form-control" placeholder="Roll it" value="" readonly></td></form>
+          <form id="form6"><td><input id="get_data6" name="data" type="text" class="form-control" placeholder="Roll it" value="{{ request.form['charisma'] }}" readonly></td></form>
           <td>Charisma</td>
         </tr>
         </tbody>
@@ -105,7 +105,6 @@ var buttons = document.querySelectorAll(".data-fetcher");
 
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", getData);
-    console.log(i)
 }
 
 
@@ -121,16 +120,9 @@ function getData(event) {
         })
 }
 submitForms = function(){
-  document.getElementById("form1").submit();
-  document.getElementById("form2").submit();
-  document.getElementById("form3").submit();
-  document.getElementById("form4").submit();
-  document.getElementById("form5").submit();
-  document.getElementById("form6").submit();
-
-
+  document.getElementById("form").submit();
+  
 }
-
 
 </script> 
 {% endblock %}
