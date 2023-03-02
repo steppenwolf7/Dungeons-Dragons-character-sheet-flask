@@ -23,7 +23,13 @@ def character():
         name = request.form['name']
         class_character = request.form['class_character']
         race = request.form['race']
-        strenght = request.form['']
+        strenght = request.form['strenght']
+        dexterity = request.form['dexterity']
+        constitution = request.form['constitution']
+        intelligence = request.form['intelligence']
+        wisdom = request.form['wisdom']
+        charisma = request.form['charisma']
+        
         error = None
 
         if not name:
@@ -34,9 +40,9 @@ def character():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO character (character_name, character_class, character_race, author_id)'
-                ' VALUES (?, ?, ?, ?)',
-                (name, class_character, race, g.user['id'])
+                'INSERT INTO character (character_name, character_class, character_race, character_strenght, character_dexterity, character_constitution, character_intelligence, character_wisdom, character_charisma, character_ author_id)'
+                ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                (name, class_character, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, g.user['id'])
             )
             db.commit()
             return redirect(url_for('roll'))
