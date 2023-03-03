@@ -1,6 +1,3 @@
-import random
-import json
-from flask import jsonify
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
@@ -20,32 +17,24 @@ def roll():
 @login_required
 def character():
     if request.method == 'POST':
-        name = request.form['name']
-        class_character = request.form['class_character']
-        race = request.form['race']
-        strenght = request.form['strenght']
-        dexterity = request.form['dexterity']
-        constitution = request.form['constitution']
-        intelligence = request.form['intelligence']
-        wisdom = request.form['wisdom']
-        charisma = request.form['charisma']
+        name = request.form.get('name')
+        class_character = request.form.get('class_character')
+        race = request.form.get('race')
+        strenght = request.form.get('get_data1')
+        dexterity = request.form.get('get_data2')
+        constitution = request.form.get('get_data3')
+        intelligence = request.form.get('get_data4')
+        wisdom = request.form.get('get_data5')
+        charisma = request.form.get('get_data6')
         
-        error = None
-
-        if not name:
-            error = 'Name is required.'
-
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO character (character_name, character_class, character_race, character_strenght, character_dexterity, character_constitution, character_intelligence, character_wisdom, character_charisma, character_ author_id)'
+        db = get_db()
+        db.execute(
+                'INSERT INTO character (character_name, character_class, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, author_id)' #columnes in data base 
                 ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                (name, class_character, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, g.user['id'])
+                (name,class_character, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, g.user['id']) 
             )
-            db.commit()
-            return redirect(url_for('roll'))
+        db.commit()
+        return redirect(url_for('roll'))
     
     return render_template('dd_roller/create_character.html')  
    
