@@ -28,15 +28,23 @@ def character():
         intelligence = request.form.get('intelligence')
         wisdom = request.form.get('wisdom')
         charisma = request.form.get('charisma')
-        #if not name:
-            #name = "Default Name"
-        db = get_db()
-        db.execute(
-            'INSERT INTO character (character_name, character_class, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, author_id)' #columnes in data base 
-            ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            (name, class_character, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, g.user['id']) 
-        )
-        db.commit()
+        error = None
+
+        if not name:
+            error = 'Name is required.'
+        if not strenght:
+            error = 'Attributes are required.'    
+
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            db.execute(
+                'INSERT INTO character (character_name, character_class, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, author_id)' #columnes in data base 
+                ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                (name, class_character, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, g.user['id']) 
+            )
+            db.commit()
         return redirect(url_for('roll'))
     
     return render_template('dd_roller/create_character.html')  

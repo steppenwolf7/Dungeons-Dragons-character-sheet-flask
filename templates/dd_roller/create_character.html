@@ -34,13 +34,7 @@
     <option>Halfling</option>
   </select>
  
-
-
-<h2>Roll your attributes!</h2>
-
-
-
- <p>You will roll four six-sided dice. The program will then choose the three dice with the highest scores and add them together to determine your attribute score. </p>            
+<h2>Roll your attributes!</h2><p>You will roll four six-sided dice. The program will then choose the three dice with the highest scores and add them together to determine your attribute score. </p>            
     <table class="table">
       <thead>
         <tr>
@@ -52,33 +46,32 @@
       <tbody>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form1" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          
-          <td><input form="my_form" id="get_data1" name="strenght"  class="form-control" placeholder="Roll it" value="{{ request.form['strenght'] }}"></td>
+          <td><input form="my_form" id="form1" name="strenght"  class="form-control" placeholder="Roll it" value="{{ request.form['strenght'] }}"></td>
           <td>Strenght</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form2" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input  form="my_form" id="get_data2" name="dexterity"  class="form-control" placeholder="Roll it" value="{{ request.form['dexterity'] }}" ></td>
+          <td><input  form="my_form" id="form2" name="dexterity"  class="form-control" placeholder="Roll it" value="{{ request.form['dexterity'] }}" ></td>
           <td>Dexterity</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form3" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="get_data3" name="constitution" class="form-control" placeholder="Roll it" value="{{ request.form['constitution'] }}" ></td>
+          <td><input form="my_form" id="form3" name="constitution" class="form-control" placeholder="Roll it" value="{{ request.form['constitution'] }}" ></td>
           <td>Constitution</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form4" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="get_data4" name="intelligence" class="form-control" placeholder="Roll it" value="{{ request.form['intelligence'] }}" ></td>
+          <td><input form="my_form" id="form4" name="intelligence" class="form-control" placeholder="Roll it" value="{{ request.form['intelligence'] }}" ></td>
           <td>Intelligence</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form5" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="get_data5" name="wisdom" class="form-control" placeholder="Roll it" value="{{ request.form['wisdom'] }}" ></td>
+          <td><input form="my_form" id="form5" name="wisdom" class="form-control" placeholder="Roll it" value="{{ request.form['wisdom'] }}" ></td>
           <td>Wisdom</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form6" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="get_data6" name="charisma" class="form-control" placeholder="Roll it" value="{{ request.form['charisma'] }}" ></td>
+          <td><input form="my_form" id="form6" name="charisma" class="form-control" placeholder="Roll it" value="{{ request.form['charisma'] }}" ></td>
           <td>Charisma</td>
         </tr>
         </tbody>
@@ -86,55 +79,32 @@
       </table>
 
     <input type="submit" value="Save" form="my_form">
-    <button type="button" class="btn btn-primary btn-block" id="save-button" onclick="submitAllForms()">Submit your rolls</button>
-    <input type="submit" value="Save2" id="save-button" onclick="submitForms()">
     </form>
-<script>
+
+    <script>
 
   function playAudio(url) {
     new Audio(url).play();
 }
 
-var buttons = document.querySelectorAll(".data-fetcher");
+var buttons = document.querySelectorAll(".data-fetcher");    //geting all buttons with class "data-fetcher"
 
 for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", getData);
+    buttons[i].addEventListener("click", getData);            // addng event that evoke function getData when  button is clicked
 }
 
 function getData(event) {
-    var formname = event.target.dataset.form;
+    var formname = event.target.dataset.form;     //getting data-form value from clicked button
+    console.log(formname)
     fetch('/attribute')
         .then(response => response.json())
         .then(throws => {
-            document.getElementById(formname).value = throws;
+            document.getElementById(formname).value = throws;    // getting element with id equal value data-from from clicked button and then put throws in to it(input)
             event.target.disabled = true;
             console.log(throws);
         })
 }
 
-
-//document.getElementById("submit").onclick = function() {
- // document.getElementById("form").submit(); 
- // document.getElementById("form").submit();
- 
-  
-//}
-
-
- // var saveButton = document.getElementById("save-button");
- // saveButton.addEventListener("click", submitAllForms);
-
-  function submitAllForms() {
-  // Pobierz wszystkie formularze na stronie
-  var forms = document.getElementsByTagName("input");
-
-  // Przejdź przez wszystkie formularze i wywołaj metodę "submit" dla każdego z nich
-  for (var i = 0; i < forms.length; i++) {
-    forms[i].submit();  
-    
-  }
- 
-}
 </script> 
 {% endblock %}
 
