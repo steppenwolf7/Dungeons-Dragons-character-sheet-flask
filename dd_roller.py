@@ -13,7 +13,13 @@ bp = Blueprint('dd_roller', __name__)
 @bp.route('/roll')
 @login_required
 def roll():
-    return render_template('dd_roller/roll.html', roll=roll)
+    db = get_db()
+    characters = db.execute(
+        'SELECT c.id, character_name, character_class, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, created, author_id, username'
+        ' FROM character c JOIN user u ON c.author_id = u.id'
+        ' ORDER BY created DESC'
+    ).fetchall() 
+    return render_template('dd_roller/roll.html', characters=characters)
 
 @bp.route('/character', methods=('GET', 'POST'))
 @login_required
@@ -51,6 +57,17 @@ def character():
 
 
 
+@bp.route('/<int:id>/delete', methods=('POST',))
+@login_required
+def delete(id):
+    get_post(id)
+    db = get_db()
+    db.execute('DELETE FROM post WHERE id = ?', (id,))
+    db.commit()
+    return redirect(url_for('blog.index'))    
+
+
+
 def get_character(id, check_author=True):                                 #checking if author of post is logged in
     character = get_db().execute(
         'SELECT c.id, character_name, character_class, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, author_id'
@@ -66,4 +83,14 @@ def get_character(id, check_author=True):                                 #check
         abort(403)
 
     return character
-   
+'''
+@bp.route('/<int:id>/delete', methods=('POST',))
+@login_required
+def delete(id):
+    get_character(id)
+    db = get_db()
+    db.execute('DELETE FROM character WHERE id = ?', (id,))
+    db.commit()
+    return redirect(url_for(''))    
+
+   '''
