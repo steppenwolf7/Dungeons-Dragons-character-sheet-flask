@@ -10,11 +10,12 @@
     <article class="character">
       <header>
         <div>
-          <h4>Character name: {{ character['character_name'] }}</h4>
+          <h2>{{ character['character_name'] }}</h2>
         </div>
+        <!--
         {% if g.user['id'] == character['author_id'] %}
-         <!-- <a class="action" href="{{ url_for('blog.update', id=character['id']) }}">Edit</a>-->
-        {% endif %}
+          <a class="action" href="{{ url_for('blog.update', id=character['id']) }}">Edit</a>
+        {% endif %} -->
       </header>
       <div>
         <button href="#attribiutes{{ loop.index }}" data-bs-toggle="collapse" class="btn btn-dark">Show Attribiutes</button></div><hr>
@@ -23,7 +24,7 @@
       <hr>
       <p class="body">Race: {{ character['race'] }}</p>
       <hr>
-      <h5 class="body">Caracter Attribiutes:</h5>
+      <h5 class="body">Character Attribiutes:</h5>
       <hr>
       <p class="body">Strenght: {{ character['Strenght'] }}</p>
       <hr>
@@ -37,8 +38,12 @@
       <hr>
       <p class="body">Charisma: {{ character['Charisma'] }}</p>
         <hr>
+        <form action="{{ url_for('dd_roller.delete')}}" method="post">
+          <input type="hidden" name="id" value="{{ character.id }}">
+          <input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+        </form>
       </div>
-     <footer class="blockquote-footer">>by {{ character['username'] }} on {{ character['created'].strftime('%Y-%m-%d') }}</footer>
+     <footer class="blockquote-footer">by  {{ character['username'] }} on {{ character['created'].strftime('%Y-%m-%d') }}</footer>
     </article>
     {% if not loop.last %}
     <hr style="height:5px;border-width:0;color:black;background-color:black">

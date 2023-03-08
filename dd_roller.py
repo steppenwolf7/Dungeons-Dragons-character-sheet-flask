@@ -73,14 +73,14 @@ def get_character(id, check_author=True):                                 #check
         abort(403)
 
     return character
-'''
-@bp.route('/<int:id>/delete', methods=('POST',))
+
+
+@bp.route('/delete', methods=('POST',))
 @login_required
-def delete(id):
-    get_character(id)
+def delete():
+    id = request.form['id']
     db = get_db()
     db.execute('DELETE FROM character WHERE id = ?', (id,))
     db.commit()
-    return redirect(url_for(''))    
-
-   '''
+    flash('Character deleted')
+    return redirect(url_for('roll'))

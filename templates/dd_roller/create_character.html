@@ -46,32 +46,32 @@
       <tbody>
         <tr>
           <td><button  type="button" class="data-fetcher" data-form="form1" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="form1" name="strenght"  class="form-control" placeholder="Roll it" value="{{ request.form['strenght'] }}"></td>
+          <td><input form="my_form" id="form1" name="strenght"  class="form-control" placeholder="Roll it" value="{{ request.form['strenght'] }}" readonly></td>
           <td>Strenght</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form2" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input  form="my_form" id="form2" name="dexterity"  class="form-control" placeholder="Roll it" value="{{ request.form['dexterity'] }}" ></td>
+          <td><input  form="my_form" id="form2" name="dexterity"  class="form-control" placeholder="Roll it" value="{{ request.form['dexterity'] }}" readonly></td>
           <td>Dexterity</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form3" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="form3" name="constitution" class="form-control" placeholder="Roll it" value="{{ request.form['constitution'] }}" ></td>
+          <td><input form="my_form" id="form3" name="constitution" class="form-control" placeholder="Roll it" value="{{ request.form['constitution'] }}" readonly></td>
           <td>Constitution</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form4" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="form4" name="intelligence" class="form-control" placeholder="Roll it" value="{{ request.form['intelligence'] }}" ></td>
+          <td><input form="my_form" id="form4" name="intelligence" class="form-control" placeholder="Roll it" value="{{ request.form['intelligence'] }}" readonly></td>
           <td>Intelligence</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form5" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="form5" name="wisdom" class="form-control" placeholder="Roll it" value="{{ request.form['wisdom'] }}" ></td>
+          <td><input form="my_form" id="form5" name="wisdom" class="form-control" placeholder="Roll it" value="{{ request.form['wisdom'] }}" readonly></td>
           <td>Wisdom</td>
         </tr>
         <tr>
           <td><button type="button" class="data-fetcher" data-form="form6" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
-          <td><input form="my_form" id="form6" name="charisma" class="form-control" placeholder="Roll it" value="{{ request.form['charisma'] }}" ></td>
+          <td><input form="my_form" id="form6" name="charisma" class="form-control" placeholder="Roll it" value="{{ request.form['charisma'] }}" readonly></td>
           <td>Charisma</td>
         </tr>
         </tbody>
