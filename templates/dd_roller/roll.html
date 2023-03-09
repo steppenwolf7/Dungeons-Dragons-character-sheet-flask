@@ -1,9 +1,13 @@
 {% extends 'base.html' %}character
+
 {% block header %}
-  <h1>{% block title %}List of Characters{% endblock %}</h1>
+<h1>{% block title %}List of Characters{% endblock %}</h1>
   {% if g.user %}
+  
+  <!--
   <a class="action" href="{{ url_for('dd_roller.character') }}">New</a>
-{% endif %}
+  -->
+  {% endif %}
 {% endblock %}
 {% block content %}
 {% for character in characters %}
@@ -18,9 +22,14 @@
         {% endif %} -->
       </header>
       <div>
+        
+        
         <button href="#attribiutes{{ loop.index }}" data-bs-toggle="collapse" class="btn btn-dark">Show Attribiutes</button></div><hr>
       <div id="attribiutes{{ loop.index }}" class="collapse">
-      <p class="body">Class: {{ character['character_class'] }}</p>
+        
+        <img src="{{ url_for('static', filename=character['race'] + '.jpg') }}" id="image_race" class="float-end" width="400" height="550">
+        
+        <p class="body">Class: {{ character['character_class'] }}</p>
       <hr>
       <p class="body">Race: {{ character['race'] }}</p>
       <hr>
