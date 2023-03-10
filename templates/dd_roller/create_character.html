@@ -6,7 +6,7 @@
 
 {% block content %}
 <form method="post" id="my_form"></form>
-<p>Type your character name</p>
+<div1><p>Type your character name</p>
   <input form="my_form" name="name" class="form-control" placeholder="Type name">
 
 <p>Choose your character class</p>
@@ -34,7 +34,10 @@
     <option>Halfling</option>
   </select>
  
-<h2>Roll your attributes!</h2><p>You will roll four six-sided dice. The program will then choose the three dice with the highest scores and add them together to determine your attribute score. </p>            
+  
+
+
+  <h2>Roll your attributes!</h2><p>You will roll four six-sided dice. The program will then choose the three dice with the highest scores and add them together to determine your attribute score. </p>            
     <table class="table">
       <thead>
         <tr>
@@ -45,52 +48,53 @@
       </thead>
       <tbody>
         <tr>
-          <td><button  type="button" class="data-fetcher" data-form="form1" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
+          <td><button  type="button" class="btn btn-dark btn-lg" data-form="form1" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
           <td><input form="my_form" id="form1" name="strenght"  class="form-control" placeholder="Roll it" value="{{ request.form['strenght'] }}" readonly></td>
           <td>Strenght</td>
         </tr>
         <tr>
-          <td><button type="button" class="data-fetcher" data-form="form2" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
+          <td><button type="button" class="btn btn-dark btn-lg" data-form="form2" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
           <td><input  form="my_form" id="form2" name="dexterity"  class="form-control" placeholder="Roll it" value="{{ request.form['dexterity'] }}" readonly></td>
           <td>Dexterity</td>
         </tr>
         <tr>
-          <td><button type="button" class="data-fetcher" data-form="form3" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
+          <td><button type="button" class="btn btn-dark btn-lg" data-form="form3" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
           <td><input form="my_form" id="form3" name="constitution" class="form-control" placeholder="Roll it" value="{{ request.form['constitution'] }}" readonly></td>
           <td>Constitution</td>
         </tr>
         <tr>
-          <td><button type="button" class="data-fetcher" data-form="form4" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
+          <td><button type="button" class="btn btn-dark btn-lg" data-form="form4" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
           <td><input form="my_form" id="form4" name="intelligence" class="form-control" placeholder="Roll it" value="{{ request.form['intelligence'] }}" readonly></td>
           <td>Intelligence</td>
         </tr>
         <tr>
-          <td><button type="button" class="data-fetcher" data-form="form5" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
+          <td><button type="button" class="btn btn-dark btn-lg" data-form="form5" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
           <td><input form="my_form" id="form5" name="wisdom" class="form-control" placeholder="Roll it" value="{{ request.form['wisdom'] }}" readonly></td>
           <td>Wisdom</td>
         </tr>
         <tr>
-          <td><button type="button" class="data-fetcher" data-form="form6" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
+          <td><button type="button" class="btn btn-dark btn-lg" data-form="form6" onclick="playAudio('/static/rpg_dice.mp3')">ROLL</button></td>
           <td><input form="my_form" id="form6" name="charisma" class="form-control" placeholder="Roll it" value="{{ request.form['charisma'] }}" readonly></td>
           <td>Charisma</td>
         </tr>
         </tbody>
       
       </table>
-
+      <div class="d-grid">
     <input type="submit" value="Save" form="my_form">
-    </form>
-
+      </div>
+  </form>
+</div1>
     <script>
 
   function playAudio(url) {
     new Audio(url).play();
 }
 
-var buttons = document.querySelectorAll(".data-fetcher");    //geting all buttons with class "data-fetcher"
+var buttons = document.querySelectorAll(".btn");    //geting all buttons with class "data-fetcher"
 
 for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", getData);            // addng event that evoke function getData when  button is clicked
+   buttons[i].addEventListener("click", getData);            // addng event that evoke function getData when  button is clicked
 }
 
 function getData(event) {
