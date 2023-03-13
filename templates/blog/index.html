@@ -3,7 +3,12 @@
 {% block header %}
 
   {% if g.user %}
-    <a class="action" href="{{ url_for('blog.create') }}">New</a>
+ <div>
+    <br>
+    <div><h2>Please leave your feedback in English/Polish or Elvish</h2></div>
+    <a href="{{ url_for('blog.create')}}" class="btn btn-dark btn-lg" style="margin-bottom: 5px;">New Post</a><br>
+    <a href="{{ url_for('index')}}" class="btn btn-outline-dark btn-sm" style="margin-bottom: 5px;">Back to list</a><br>
+  </div>
   {% endif %}
 {% endblock %}
 
@@ -13,18 +18,18 @@
 {% for post in posts %}
     <article class="post">
       <header>
-        <div>
+        <div style="margin-bottom: 25px;">
           <h1>{{ post['title'] }}</h1>
-          <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+          <p class="body">{{ post['body'] }}</p>
         </div>
         {% if g.user['id'] == post['author_id'] %}
-          <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+          <a class="btn btn-outline-dark btn-sm" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
         {% endif %}
       </header>
-      <p class="body">{{ post['body'] }}</p>
+      <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
     </article>
     {% if not loop.last %}
-      <hr>
+   
     {% endif %}
   {% endfor %}
 {% endblock %}
