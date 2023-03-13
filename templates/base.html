@@ -11,10 +11,10 @@
   
     {% if g.user %}
       <li><span class="text-warning">{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}" class="btn btn-outline-warning">Log Out</a>
+      <li><a href="{{ url_for('auth.logout') }}" class="btn btn-outline-warning btn-sm">Log Out</a>
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Register</a>
-      <li><a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary">Log In</a>
+      <li><a href="{{ url_for('auth.register') }}" class="btn btn-outline-warning btn-sm">Register</a>
+      <li><a href="{{ url_for('auth.login') }}" class="btn btn-outline-warning btn-sm">Log In</a>
     {% endif %}
      
   </ul>
