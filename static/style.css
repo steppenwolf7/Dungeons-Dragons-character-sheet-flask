@@ -1,18 +1,18 @@
-html { serif; background-image: url("table1.jpg"); padding: 1rem; }
+html { serif; background-image: url("table1.jpg"); padding: 1rem; text-align: center; display: flex; justify-content: center; }
 body { max-width: 960px; margin: 0 auto;  border-radius: 5%; }
-h1 { font-family: 'IM Fell DW Pica SC', serif; color: #f0f4f6; margin: 1rem 0; background: rgb(33, 32, 32);}
+h1 { font-family: 'IM Fell DW Pica SC', serif; color: #f0f4f6; margin: 1rem 0; background: rgb(33, 32, 32); border-radius: 7px;}
 a { color: #d92958; }
 hr { border: none; border-top: 1px solid rgb(33, 32, 32);  border-radius: 50%; }
-nav { background: rgb(33, 32, 32); display: flex; align-items: center; padding: 0 0.5rem;}  
-nav h1 { flex: auto; margin: 0; }
+nav { background: rgb(33, 32, 32); display: flex; align-items: center; padding: 0 0.5rem; border-radius: 4px;}  
+nav h1 { flex: auto; margin: 0; border-radius: 7px; }
 nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
 nav ul  { display: flex; list-style: none; margin: 0; padding: 0; style="white;" }
 nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content { padding: 0 1rem 1rem; }
 .content > header { border-bottom: 1px solid rgb(12, 12, 12); display: flex; align-items: flex-end;}
 .content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; background: rgb(36, 36, 36); }
-.flash { margin: 1em 0; padding: 1em; background: #0889d3; border: 1px solid #377ba8; }
-.post > header { display: flex; align-items: flex-end; font-size: 0.85em; background: rgb(215, 31, 31);}
+.flash { margin: 1em 0; padding: 1em; background-image: url("warning.jpg"); border-radius: 5px; }
+.post > header { display: flex; align-items: flex-end; font-size: 0.85em;}
 .post > header > div:first-of-type { flex: auto; }
 .post > header h1 { font-size: 1.5em; margin-bottom: 0; }
 .post .about { color: slategray; font-style: italic;  }
@@ -27,3 +27,4 @@ input[type=submit] { align-self: start; min-width: 10em; }
 h3 { font-family: 'Indie Flower', cursive; font-weight: bold;}
 h4 { font-family: 'IM Fell DW Pica SC', serif; }
 div1 { font-family: 'IM Fell DW Pica SC', serif; font-size: 23px; }
+div2 {font-family: 'IM Fell DW Pica SC', serif; font-size: 23px; }

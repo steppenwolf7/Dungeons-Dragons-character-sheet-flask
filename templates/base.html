@@ -1,10 +1,14 @@
 <!doctype html>
+
 <title>{% block title %}{% endblock %} D&D Sheet</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<div1>
 <nav>
+  
   <h1>Dungeons & Dragons Sheet</h1>
   <ul>
+  
     {% if g.user %}
       <li><span class="text-warning">{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}" class="btn btn-outline-warning">Log Out</a>
@@ -12,8 +16,9 @@
       <li><a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary">Register</a>
       <li><a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary">Log In</a>
     {% endif %}
+     
   </ul>
-</nav>
+</nav> <div1>
 
 <section class="content">
   {% block button %}
@@ -31,7 +36,7 @@
     {% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+    <h2 class="flash">{{ message }}</h2>
   {% endfor %}
   {% block content %}{% endblock %}
 </section>

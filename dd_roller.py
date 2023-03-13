@@ -9,7 +9,7 @@ from .db import get_db
 bp = Blueprint('dd_roller', __name__)
 
 
-@bp.route('/roll')
+@bp.route('/')
 @login_required
 def roll():
     db = get_db()
@@ -18,7 +18,7 @@ def roll():
         ' FROM character c JOIN user u ON c.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('dd_roller/roll.html', characters=characters)
+    return render_template('dd_roller/index.html', characters=characters)
 
 
 @bp.route('/character', methods=('GET', 'POST'))
@@ -53,7 +53,7 @@ def character():
                  constitution, intelligence, wisdom, charisma, g.user['id'])
             )
             db.commit()
-        return redirect(url_for('roll'))
+        return redirect(url_for('index'))
 
     return render_template('dd_roller/create_character.html')
 
@@ -88,4 +88,4 @@ def delete():
         db.execute('DELETE FROM character WHERE id = ?', (id,))
         db.commit()
         flash('Character deleted')
-    return redirect(url_for('roll'))
+    return redirect(url_for('index'))
