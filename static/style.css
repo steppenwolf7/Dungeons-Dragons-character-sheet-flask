@@ -24,7 +24,6 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content textarea { min-height: 12em; resize: vertical; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
-h3 { font-family: 'Indie Flower', cursive; font-weight: bold;}
 h4 { font-family: 'IM Fell DW Pica SC', serif; }
 div1 { font-family: 'IM Fell DW Pica SC', serif; font-size: 23px; }
 div2 {font-family: 'IM Fell DW Pica SC', serif; font-size: 23px; }

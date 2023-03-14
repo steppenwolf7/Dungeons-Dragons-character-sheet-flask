@@ -6,10 +6,10 @@
 
 {% block content %}
 <form method="post" id="my_form"></form>
-<div1><p>Type your character name</p>
+<div1><h3>Type your character name</h3>
   <input form="my_form" name="name" class="form-control" placeholder="Type name">
 
-<p>Choose your character class</p>
+<h3>Choose your character class</h3>
   <select form="my_form" name="class_character" id="class_character" class="form-select" value="{{ request.form['class_character'] }}">
     <option>Barbarian</option>
     <option>Bard</option>
@@ -24,7 +24,7 @@
     <option>Wizard</option>
   </select>
 
-<p>Choose your character race</p>
+<h3>Choose your character race</h3>
   <select form="my_form" name="race" id="race" class="form-select" value="{{ request.form['race'] }}">
     <option>Human</option>
     <option>Elve</option>
@@ -33,7 +33,7 @@
     <option>Half-orc</option>
     <option>Halfling</option>
     <option>Gnome</option>
-  </select>
+  </select><br>
  
   
 
