@@ -80,12 +80,32 @@ def get_character(id, check_author=True):  # checking if author of post is logge
 def delete():
     id = request.form['id']
     character = get_character(id, check_author=False)
-    
+
     if character['author_id'] != g.user['id']:
         flash('This is not your character')
-    else:    
+    else:
         db = get_db()
         db.execute('DELETE FROM character WHERE id = ?', (id,))
         db.commit()
         flash('Character deleted')
     return redirect(url_for('index'))
+
+
+@bp.route('/thismysicretendpointtodeletetrollpostsandcharacters', methods=('GET','POST'))
+@login_required
+def delete_post():
+    db = get_db()
+    characters = db.execute(
+        'SELECT c.id, character_name, character_class, race, strenght, dexterity, constitution, intelligence, wisdom, charisma, created, author_id, username'
+        ' FROM character c JOIN user u ON c.author_id = u.id'
+        ' ORDER BY created DESC'
+    ).fetchall()
+    
+    if request.method == 'POST':    
+        db = get_db()
+        id = request.form['id']
+        db.execute('DELETE FROM character WHERE id = ?', (id,))
+        db.commit()
+        flash('Character deleted')
+        return redirect(url_for('dd_roller.delete_post'))
+    return render_template('delete_posts/delete_post.html', characters=characters)   

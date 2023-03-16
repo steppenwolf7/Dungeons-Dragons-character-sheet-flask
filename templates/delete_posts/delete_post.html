@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+
+{% block header %}
+<h1>{% block title %}List of Characters{% endblock %}</h1>
+
+{% endblock %}
+
+{% block content %}
+{% for character in characters %}
+    <article class="character">
+      <header>
+        <div1>
+          <h2>{{ character['character_name'] }}</h2>
+        </div1>
+        <!--
+        {% if g.user['id'] == character['author_id'] %}
+          <a class="action" href="{{ url_for('blog.update', id=character['id']) }}">Edit</a>
+        {% endif %} -->
+      </header>
+      
+        
+        <div1>
+         <button href="#attribiutes{{ loop.index }}" data-bs-toggle="collapse" class="btn btn-dark">Show Attribiutes</button></div1><hr>
+      <div id="attribiutes{{ loop.index }}" class="collapse">
+        
+        <img src="{{ url_for('static', filename=character['race'] + '.jpg') }}" id="image_race" class="float-end" width="400" height="565">
+        
+        <h3 class="body">Class: {{ character['character_class'] }}</h3>
+      <hr>
+      <h3 class="body">Race: {{ character['race'] }}</h3>
+      <hr>
+      <h4 class="body">Character Attribiutes:</h4>
+      <hr>
+      <h4 class="body">Strenght: {{ character['Strenght'] }}</h4>
+      <hr>
+      <h4 class="body">Dexterity: {{ character['Dexterity'] }}</h4>
+      <hr>
+      <h4 class="body">Constitution: {{ character['Constitution'] }}</h4>
+      <hr>
+      <h4 class="body">Intelligence: {{ character['Intelligence'] }}</h4>
+      <hr>
+      <h4 class="body">Wisdom: {{ character['Wisdom'] }}</h4>
+      <hr>
+      <h4 class="body">Charisma: {{ character['Charisma'] }}</h4>
+        <hr>
+        <form action="{{ url_for('dd_roller.delete_post')}}" method="post">
+          <input type="hidden" name="id" value="{{ character.id }}">
+          <input class="btn btn-outline-danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+        </form>
+      </div>
+    <div1> <footer class="blockquote-footer">by  {{ character['username'] }} on {{ character['created'].strftime('%Y-%m-%d') }}</footer></div1>
+    </article>
+   
+  {% endfor %}
+  {% endblock %}
+ 
