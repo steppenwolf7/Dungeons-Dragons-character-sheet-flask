@@ -1,5 +1,5 @@
 # DnD-character-sheet-app
-Simplified Dungeons &amp; Dragons character sheet with dice roller, made in flask for learning purposes.
+Simplified Dungeons &amp; Dragons character sheet with dice roller. Made in flask for learning purposes.
 
 
 First you need to register
