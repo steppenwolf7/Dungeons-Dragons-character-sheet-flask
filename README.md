@@ -1,6 +1,6 @@
 # DnD-character-sheet-app
 Simplified Dungeons &amp; Dragons character sheet with dice roller. Made in flask for learning purposes.
-
+You can find it on this adress: https://viggo.pythonanywhere.com/
 
 First you need to register
 
