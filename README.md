@@ -6,7 +6,7 @@ First you need to register
 
 ![image](https://user-images.githubusercontent.com/25902724/226099543-86af8c7c-65f5-4be1-b8c6-d337a35b8d69.png)
 
-Next you have list of characters which are allready done by users and ""create character" button.
+Next you have list of characters which are allready done by users. Also you can click "create character" button.
 
 ![image](https://user-images.githubusercontent.com/25902724/226099709-183dd95e-57bc-4bcc-a430-8a50ed5f202a.png)
 
