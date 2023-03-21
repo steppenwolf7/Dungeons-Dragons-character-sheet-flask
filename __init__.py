@@ -24,7 +24,7 @@ def create_app(test_config=None):
         pass
 
 
-    @app.route('/attribute', methods=('GET', 'POST'))
+    @app.route('/attribute', methods=('GET', 'POST')) #endpoint for rolling dice
     def attribute():
         throws = []
         def roll_1d6():

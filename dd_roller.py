@@ -9,7 +9,7 @@ from .db import get_db
 bp = Blueprint('dd_roller', __name__)
 
 
-@bp.route('/')
+@bp.route('/')     #endpoint which open db and give values to the list of characters
 @login_required
 def roll():
     db = get_db()
@@ -21,8 +21,8 @@ def roll():
     return render_template('dd_roller/index.html', characters=characters)
 
 
-@bp.route('/character', methods=('GET', 'POST'))
-@login_required
+@bp.route('/character', methods=('GET', 'POST'))  #endpoint which is giving values from post method in to variable and then   
+@login_required                                    # put those values in to db         
 def character():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -75,7 +75,7 @@ def get_character(id, check_author=True):  # checking if author of post is logge
     return character
 
 
-@bp.route('/delete', methods=('POST',))
+@bp.route('/delete', methods=('POST',))  #endpoint which delete character only if character whas created by same id which is logged in  
 @login_required
 def delete():
     id = request.form['id']
@@ -91,7 +91,7 @@ def delete():
     return redirect(url_for('index'))
 
 
-@bp.route('/thismysicretendpointtodeletetrollpostsandcharacters', methods=('GET','POST'))
+@bp.route('/thismysicretendpointtodeletetrollpostsandcharacters', methods=('GET','POST')) #endpoint which delete characters without need of beeing owner of characer 
 @login_required
 def delete_post():
     db = get_db()
